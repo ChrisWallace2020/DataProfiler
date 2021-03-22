@@ -123,6 +123,9 @@ The format for a profile is below:
             "categories": list(str),
             "unique_count": int,
             "unique_ratio": float,
+            "precision": int,
+            "times": dict(float),
+            "format": string
         }
     }
 }
@@ -257,7 +260,7 @@ python3 -m unittest discover -p test_profile_builder.py
 
 To run a file with Pytest use:
 ```
-pytest DataProfiler/tests/data_readers/test_csv_data.py -v
+pytest dataprofiler/tests/data_readers/test_csv_data.py -v
 ```
 
 To run individual of unit test, use form:
@@ -527,7 +530,10 @@ Possible `options`:
 * delimiter - Must be a string, for example `"delimiter": ","`
 * data_format - must be a string, possible choices: "dataframe", "records"
 * selected_columns - columns being selected from the entire dataset, must be a list `["column 1", "ssn"]`
-* header - Define the header, similar to pandas
+* header - Define the header, for example
+    - `"header": 'auto'` for auto detection
+    - `"header": None` for no header
+    - `"header": <INT>` to specify the header row (0 based index)
 
 ##### JSONData
 
